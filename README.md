@@ -1,6 +1,20 @@
 # Google Search Crawler
 
-selenium webdriver crwaling google search result.
+### EN:
+
+Use WebDriver to crawl Google search results for links and titles
+
+and write Excel data
+
+Built-in functions to manipulate Excel, so you can adjust your own needs
+
+### ZH:
+
+使用 WebDriver 爬取谷歌搜索结果的链接及标题
+
+并写入 Excel 数据
+
+内置有操作 Excel 的函数，可自行调整需求
 
 ## Install
 
@@ -17,7 +31,7 @@ Download the file and add environment variables
 
 ## Set
 
-### en:
+### EN:
 
 Set the main file configuration variables
 
@@ -38,7 +52,7 @@ table_name
 table_cell
 ```
 
-### zh:
+### ZH:
 
 设置 main 文件配置变量
 
@@ -61,7 +75,7 @@ table_cell
 
 ## Use
 
-### en:
+### EN:
 
 1. Complete the necessary settings -> run the main.py file
 
@@ -71,7 +85,7 @@ table_cell
 
 4. After running the program, the table will be written according to the set excel file address (default from cell A2, can be set)
 
-### zh:
+### ZH:
 
 1. 完成必要设置->运行 main.py 文件.
 
