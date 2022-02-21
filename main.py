@@ -1,10 +1,15 @@
 from tools import operate_excel
 from selenium import webdriver
 from bs4 import BeautifulSoup
-import random
 import time
 
 OperateExcel = operate_excel
+
+HM_inspection_tips = '该流量可能是由恶意软件'
+search_domain = 'https://www.google.com'
+file_path = r'C:\Users\apuser\Desktop\crawResult-50(2022-2-21).xlsx'
+table_name = 'Sheet1'
+table_cell = 'a2'
 
 
 class SearchResult:
@@ -37,19 +42,19 @@ class GoogleAPI:
     def __init__(self):
         self.driver = None
         self.timeSleep = 5
-        self.searchUrl = 'https://www.google.com'
-        self.HMInspectionTips = '该流量可能是由恶意软件'
+        self.searchDomain = search_domain
+        self.HMInspectionTips = HM_inspection_tips
 
     def firstOpenUrl(self, driver):
         self.driver = driver
-        driver.get(self.searchUrl)
-        input("\nWaiting for cookies")
+        driver.get(self.searchDomain)
+        input("\nSetting up Driver Browser")
         driver.get_cookies()
         print('\nCookies\t->', driver.get_cookies())
 
     def pageSearchResults(self, keyword, num):
         driver = self.driver
-        driver.get('{}/search?q={}&start={}'.format(self.searchUrl, keyword, num))
+        driver.get('{}/search?q={}&start={}'.format(self.searchDomain, keyword, num))
         if self.HMInspectionTips in driver.page_source:
             input('Whether human-machine verification continues?')
             driver.get_cookies()
@@ -63,10 +68,10 @@ class GoogleAPI:
         result += GoogleAPI.pageSearchResults(self, keyword, num)
         time.sleep(self.timeSleep)
         return result[0:count]
-        while(len(result) <= count):
-            result += GoogleAPI.pageSearchResults(self, keyword, num)
-            time.sleep(self.timeSleep)
-            num += 10
+        # while(len(result) <= count):
+        #     result += GoogleAPI.pageSearchResults(self, keyword, num)
+        #     time.sleep(self.timeSleep)
+        #     num += 10
 
     def extractSearchResults(self, resultList):
         results = list()
@@ -137,12 +142,11 @@ def crawler():
 
 
 def writeExecel(data):
-    print(data)
-    filepath = r'C:\Users\apuser\Desktop\crawResult-50(2022-2-21).xlsx'
+    # print(data)
     app = OperateExcel.init_data()
-    wb1 = OperateExcel.get_wb(app, filepath)
-    sht1 = OperateExcel.get_sht(wb1, 'Sheet1')
-    OperateExcel.write_td(sht1, data, 'a2')
+    wb1 = OperateExcel.get_wb(app, file_path)
+    sht1 = OperateExcel.get_sht(wb1, table_name)
+    OperateExcel.write_td(sht1, data, table_cell)
     wb1.save()
     app.quit()
 
