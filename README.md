@@ -1,4 +1,4 @@
-# Google Search Crawler
+# Search Crawler
 
 ### EN:
 
@@ -36,12 +36,6 @@ Download the file and add environment variables
 Set the main file configuration variables
 
 ```
-# Human Machine Inspection Page Tips Text
-HM_inspection_tips
-
-# Search engine domain name
-search_domain
-
 # Excel file address
 file_path
 
@@ -50,6 +44,9 @@ table_name
 
 # table cell
 table_cell
+
+#The amount to crawl for each keyword
+required_quantity
 ```
 
 ### ZH:
@@ -57,12 +54,6 @@ table_cell
 设置 main 文件配置变量
 
 ```
-# 人机检查页面提示文本
-HM_inspection_tips
-
-# 搜寻引擎域名
-search_domain
-
 # Excel文件地址
 file_path
 
@@ -71,9 +62,12 @@ table_name
 
 # 表格单元格
 table_cell
+
+#每个关键词要爬取的数量
+required_quantity
 ```
 
-## Use
+## Use Google Crawler
 
 ### EN:
 
